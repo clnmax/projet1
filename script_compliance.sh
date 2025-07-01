@@ -65,7 +65,7 @@ check_risky_users() {
         output+="$NO_PASSWORD_USERS\n\n"
     fi
 
-    # 3.3 Utilisateurs avec accès sudo (via groupe wheel ou entrée directe)
+    # 3.3 Users avec accès sudo (via groupe wheel ou entrée directe)
     SUDO_USERS=$(grep -E '^(%wheel|[^#].*ALL=\(ALL\).*ALL)' /etc/sudoers /etc/sudoers.d/* 2>/dev/null | grep -v 'NOPASSWD' | awk '{print $1}' | sed 's/%//g' | sort -u)
     NOPASSWD_SUDO_USERS=$(grep -E '^(%wheel|[^#].*ALL=\(ALL\).*NOPASSWD)' /etc/sudoers /etc/sudoers.d/* 2>/dev/null | awk '{print $1}' | sed 's/%//g' | sort -u)
     
