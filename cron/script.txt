@@ -1,0 +1,1 @@
+0 2 * * * /home/vagrant/script_compliance.sh  >> /var/log/audit_script.log 2>&1
